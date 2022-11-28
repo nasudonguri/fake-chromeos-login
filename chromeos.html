@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+<title>chromeOS</title>
+<meta charset="UTF-8"/>
+<meta name=”viewport” content=”width=device-width,initial-scale=1,user-scalable=1″>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+*{
+margin:0;
+padding:0;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+outline: none;
+resize: none;
+border:0;
+box-sizing: border-box;
+z-index: 1;
+font-size:2vmin;
+}
+i,[type="submit"]{
+font-family:'Material Symbols Rounded';
+font-weight:400;
+font-style:normal;
+font-size:1.2em;
+line-height1;
+letter-spacing:normal;
+text-transform:none;
+display:inline-block;
+white-space:nowrap;
+word-wrap:normal;
+direction:ltr;
+-webkit-font-feature-settings:'liga';
+-webkit-font-smoothing:antialiased;
+font-variation-settings:'FILL' 1,'wght' 700,'GRAD' -25,'opsz' 48;
+}
+body *:not(span,button i,button){
+position:fixed;
+}
+body{
+width:100vw;
+height:100vh;
+background:#0152e9 url(wallpaper.png) no-repeat;
+background-size: cover;
+z-index:0;
+}
+body::before,body::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+}
+body::before{
+background:inherit;
+filter: blur(20px);
+z-index:-2;
+}
+body::after{
+background-color:#fff;
+filter:opacity(40%);
+z-index:-1;
+}
+#name{
+bottom:50vh;
+left:25vw;
+width:50vw;
+height:5vh;
+font-size:5vh;
+background-color:transparent;
+text-align:center;
+}
+input,button{
+height:6vh;
+padding:10px 20px;
+background-color:rgba(255,255,255,0.7);
+}
+button,[type="submit"]{
+display:inline-block;
+border-radius:30px;
+}
+.button{
+height:6vh;
+white-space: nowrap;
+bottom:5px;
+}
+.left{
+left:5px;
+}
+.right{
+right:5px;
+}
+#pwd{
+width:25vw;
+border-radius:5px;
+top:55vh;
+left:35vw;
+}
+#go{
+top:55vh;
+left:60vw;
+}
+#user{
+bottom:60vh;
+left:calc(50vw - 10vh);
+display: inline-block;
+border-radius: 50%;
+background-color: #89baeb;
+width: 1em;
+height: 1em;
+font-size:20vh;
+overflow: hidden;
+}
+#user::before,#user::after{
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+background-color: #3388dd;
+content: "";
+}
+#user::before{
+top: 0.15em;
+width: 0.4em;
+height: 0.4em;
+}
+#user::after {
+bottom: -0.4em;
+width: 0.8em;
+height: 0.8em;
+}
+</style>
+</head>
+<body>
+<div id="user"></div>
+<input type="text" value="俺" id="name">
+<form  id="login">
+<input type="password" placeholder="パスワード" id="pwd">
+<input type="submit" value="arrow_forward" id="go">
+</form>
+<div class="button left">
+<button><i>power_settings_new</i>終了</button>
+<button id="full"><i>account_circle</i>ユーザーを追加</button>
+</div>
+<div class="button right">
+<button>JA<i>network_wifibattery_5_bar</i><span id="now"></span></button>
+</div>
+<script>
+const elm=n=>document.getElementById(n);
+elm('full').onclick=()=>document.documentElement.requestFullscreen();
+const now=()=>{
+var t = new Date();
+elm('now').innerHTML=`${t.getHours()}:${t.getMinutes()}`;
+}
+setInterval(now(),60000);
+</script>
+</body>
+</html>
