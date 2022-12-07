@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>ChromeOS</title>
+<title>chromeOS</title>
 <meta charset="UTF-8"/>
 <meta name=”viewport” content=”width=device-width,initial-scale=1,user-scalable=1″>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -22,12 +22,12 @@ box-sizing: border-box;
 z-index: 1;
 font-size:2vmin;
 }
-i,[type="submit"], #pwd::after{
+i,[type="submit"]{
 font-family:'Material Symbols Rounded';
 font-weight:400;
 font-style:normal;
 font-size:1.2em;
-line-height:1;
+line-height1;
 letter-spacing:normal;
 text-transform:none;
 display:inline-block;
@@ -78,7 +78,7 @@ text-align:center;
 input,button{
 height:6vh;
 padding:10px 20px;
-background-color:rgba(255,255,255,0.8);
+background-color:rgba(255,255,255,0.7);
 }
 button,[type="submit"]{
 display:inline-block;
@@ -95,14 +95,17 @@ left:5px;
 .right{
 right:5px;
 }
+.right *:first-child{
+border-radius:30px 5px 5px 30px;
+}
+.right *:last-child{
+border-radius:5px 30px 30px 5px;
+}
 #pwd{
 width:25vw;
 border-radius:5px;
 top:55vh;
 left:35vw;
-}
-#pwd::after{
-  content:"visibility";
 }
 #go{
 top:55vh;
@@ -148,16 +151,18 @@ height: 0.8em;
 </form>
 <div class="button left">
 <button><i>power_settings_new</i>終了</button>
-<button id="full"><i>account_circle</i>ユーザーを追加</button>
+<button id="full"><i>face</i>ユーザーを追加</button>
 </div>
 <div class="button right">
-<button>JA<i>network_wifibattery_5_bar</i><span id="now"></span></button>
+<button><span id="today"></span></button>
+<button><span id="now"></span><i>network_wifibattery_5_bar</i></button>
 </div>
 <script>
 const elm=n=>document.getElementById(n);
 elm('full').onclick=()=>document.documentElement.requestFullscreen();
 const now=()=>{
 var t = new Date();
+elm('today').innerHTML=`${t.getMonth()+1}月${t.getDate()}日`;
 elm('now').innerHTML=`${t.getHours()}:${t.getMinutes()}`;
 }
 setInterval(now(),60000);
